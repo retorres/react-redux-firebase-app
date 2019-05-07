@@ -18,6 +18,9 @@ class CreateProject extends Component {
         this.props.createProject(this.state)
     }
     render() {
+
+        // if (!auth.uid) return <Redirect to='/signin' />
+
         return (
             <div className="container">
                 <form className="white" onSubmit={this.handleSubmit}>
@@ -39,11 +42,16 @@ class CreateProject extends Component {
     }
 }
 
-
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state, ownProps) => {
     return {
-        createProject: (project)=> dispatch(createProject(project))
     }
 }
 
-export default connect(null, mapDispatchToProps)(CreateProject)
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        createProject: (project) => dispatch(createProject(project))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateProject)

@@ -2,10 +2,12 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
+import { Redirect } from 'react-router-dom'
 
 const ProjectDetails = (props) => {
-    console.log('proppppps', props)
+    console.log('proppps', props)
     const { project } = props
+
     if (project) {
         return (
             <div className="container section project-details">
@@ -16,7 +18,7 @@ const ProjectDetails = (props) => {
                     </div>
                     <div className="card-action gret lighten-4 grey-text">
                         <div>{project.authorFirstName} {project.authorLastName} </div>
-                        <div>{project.createdAt}</div>
+                        <div></div>
                     </div>
                 </div>
             </div>
@@ -32,7 +34,6 @@ const ProjectDetails = (props) => {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    console.log('stateeeee', state)
     const id = ownProps.match.params.id
     const projects = state.firestore.data.projects
     const project = projects ? projects[id] : null
