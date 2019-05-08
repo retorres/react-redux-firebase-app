@@ -39,6 +39,7 @@ export const signUp = (newUser) => {
                 .collection('users')
                 .doc(res.user.uid)
                 .set({
+                    email: newUser.email,
                     firstName: newUser.firstName,
                     lastName: newUser.lastName,
                     initials: newUser.firstName[0] + newUser.lastName[0]
