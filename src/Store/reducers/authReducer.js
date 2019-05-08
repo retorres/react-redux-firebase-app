@@ -25,6 +25,7 @@ const authReducer = (state = initState, action) => {
                 ...state,
                 authError: null
             }
+
         case 'SIGNOUT_ERROR':
             console.log('signOut success')
             return {
@@ -32,12 +33,18 @@ const authReducer = (state = initState, action) => {
                 authError: null
             }
 
-
-        // firebase.auth().signOut().then(() => {
-        //     dispatch({ type: 'SIGNOUT_SUCCESS' })
-        // }).catch((err) => {
-        //     dispatch({ type: 'SIGNOUT_ERROR', err })
-        // })
+        case 'SIGNUP_SUCCESS':
+            console.log('signUp success')
+            return {
+                ...state,
+                authError: null
+            }
+        case 'SIGNUP_ERROR':
+            console.log('signUp error')
+            return {
+                ...state,
+                authError: action.err.message
+            }
 
         default:
             return state

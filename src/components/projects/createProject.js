@@ -16,11 +16,9 @@ class CreateProject extends Component {
     handleSubmit = (e) => {
         e.preventDefault()
         this.props.createProject(this.state)
+        this.props.history.push('/')
     }
     render() {
-
-        // if (!auth.uid) return <Redirect to='/signin' />
-
         return (
             <div className="container">
                 <form className="white" onSubmit={this.handleSubmit}>
@@ -50,7 +48,10 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        createProject: (project) => dispatch(createProject(project))
+        createProject: (project) => { 
+            console.log(project) 
+            return dispatch(createProject(project)) 
+        }
     }
 }
 
